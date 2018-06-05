@@ -114,9 +114,9 @@ class SA:
             fitness.append(path.distance)
             if best_path.distance > path.distance:
                 best_path = path.copy()
-            plt.cla()
-            path.plot('{} with p={}'.format(it, round(p,3)))
-            plt.pause(0.15)
+            #plt.cla()
+            #path.plot('{} with p={}'.format(it, round(p,3)))
+            #plt.pause(0.15)
         plt.cla()
         best_path.plot()
         plt.pause(5)
@@ -154,7 +154,7 @@ if __name__ == '__main__':
     print('Initial', p)
     #func = lambda x: (100 / x)**2 # weighting function; higher means shorter distance
     solver = SA(points = points, T = 125)
-    solution = solver.solve(N=2000)
+    solution = solver.solve(N=1000)
     solution.plot()
     print('Solution', solution, 'final temp', round(solver.T, 6))
     print(str(solution.path))
