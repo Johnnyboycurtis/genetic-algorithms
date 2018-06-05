@@ -52,6 +52,8 @@ def SA(search_space, func, T, N=100):
     for i in range(N):
         prop = x + np.random.normal() * scale
         p = max(0, min(1, np.exp( (func(prop) - func(x))/ T)))
+        if (func(prop) - func(x)) > 0:
+            p = 1
         if np.random.rand() < p:
             #print((prop,func(prop)), (x, func(x)))    
             x = prop
@@ -69,7 +71,7 @@ if __name__ == '__main__':
     plt.ion()
     for it in range(20):
         plt.cla()
-        x1, y1 = SA(X, h, T = 8)
+        x1, y1 = SA(X, h, T = 18)
         #print(x1, y1)
         
         plt.plot(X, hv(X))
